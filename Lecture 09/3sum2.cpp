@@ -20,6 +20,7 @@ int32_t main() {
 
 		for (int i = 0; i < n; i += 1) {
 			cin >> a[i];
+			a[i] %= 10;//Changed
 			int ld = a[i] % 10;
 			freq[ld] += 1;
 		}
