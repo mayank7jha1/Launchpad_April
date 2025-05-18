@@ -54,7 +54,7 @@ int32_t main() {
 		for (int i = 0; i < size - 2; i += 1) {
 			for (int j = i + 1; j < size - 1; j += 1) {
 				for (int k = j + 1; k < size; k += 1) {
-					long long sum = a[i] + a[j] + a[k];
+					long long sum = ld[i] + ld[j] + ld[k];
 					if ((sum) % 10 == 3) {
 						f1 = 1;
 						cout << "YES" << endl;
@@ -77,3 +77,7 @@ int32_t main() {
 		t -= 1;
 	}
 }
+
+
+
+
