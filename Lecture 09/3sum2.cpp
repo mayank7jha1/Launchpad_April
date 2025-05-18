@@ -1,14 +1,14 @@
 #include<iostream>
 using  namespace std;
+#define int long long
 
 // int : 10 ^ 9
 // long / long int : 10 ^ 12
 // long long / long long int : 10 ^ 18
 
-
 //Computations : n*n*n*t; 30*30*30*1000 =  (27*10^6).
 
-int main() {
+int32_t main() {
 	int t;
 	cin >> t;
 
@@ -48,7 +48,6 @@ int main() {
 			}
 		}
 
-
 		int f1 = 0;
 
 		for (int i = 0; i < size - 2; i += 1) {
@@ -74,8 +73,6 @@ int main() {
 		if (f1 == 0) {
 			cout << "NO" << endl;
 		}
-
 		t -= 1;
 	}
-
 }
