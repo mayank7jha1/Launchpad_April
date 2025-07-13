@@ -44,7 +44,7 @@ int main() {
 		}
 	}
 
-	if (maze[0][0] == '0' || maze[n - 1][n - 1] == '0') {
+	if (maze[0][0] == '0' or maze[n - 1][n - 1] == '0') {
 		cout << "";
 		return 0;
 	}
@@ -52,9 +52,10 @@ int main() {
 	F(0, 0, "");
 
 	sort(paths.begin(), paths.end());
-	for (string &p : paths) {
-		cout << p << " ";
+	for (int i = 0; i < paths.size(); i++) {
+		cout << paths[i] << " ";
 	}
+	cout << endl;
 
 	return 0;
 }
