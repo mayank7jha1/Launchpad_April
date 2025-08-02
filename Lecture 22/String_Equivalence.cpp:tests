@@ -1,0 +1,33 @@
+[
+	{
+		"correct_answers":
+		[
+			"aaa\naab\naba\nabb\nabc"
+		],
+		"test": "3\n"
+	},
+	{
+		"correct_answers":
+		[
+			"aaaa\naaab\naaba\naabb\naabc\nabaa\nabab\nabac\nabba\nabbb\nabbc\nabca\nabcb\nabcc\nabcd"
+		],
+		"test": "4\n"
+	},
+	{
+		"correct_answers":
+		[
+			"aa\nab"
+		],
+		"test": "2\n"
+	},
+	{
+		"correct_answers":
+		[
+			"a"
+		],
+		"test": "1\n"
+	},
+	{
+		"test": "5\n"
+	}
+]
