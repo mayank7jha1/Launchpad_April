@@ -36,6 +36,17 @@ void Inorder(TreeNode<int>*root) {
 	Inorder(root->right);
 }
 
+vector<int>ans;
+vector<int> Inorder(TreeNode<int>*root) {
+	if (root == NULL) {
+		return ans;
+	}
+	Inorder(root->left);
+	ans.push_back(root->val);
+	// cout << root->val << " ";
+	Inorder(root->right);
+}
+
 void Postorder(TreeNode<int>*root) {
 	if (root == NULL) {
 		return;
@@ -92,7 +103,7 @@ void Mirror(TreeNode<int>*root) {
 	swap(root->left, root->right);
 }
 
-TreeNode<int>* lca(TreeNode<int>* root, TreeNode<int>* p, TreeNode<int>* q) {
+TreeNode<int>*lca(TreeNode<int>* root, TreeNode<int>* p, TreeNode<int>* q) {
 
 	if (root == NULL) {
 		return NULL;
@@ -318,7 +329,128 @@ void bfs2(TreeNode<int>*root) {
 			}
 		}
 	}
+}
+
+TreeNode<int>*InsertInBst(TreeNode<int>*r, int value) {
+
+	if (r == NULL) {
+		r = new TreeNode<int>(value);
+		return r;
+	}
+
+	if (r->val > value) {
+		r->left = InsertInBst(r->left, value);
+	}
+
+	if (r->val < value) {
+		r->right = InsertInBst(r->right, value);
+	}
+
+	return r;
+}
+
+
+TreeNode<int>*BuildBst() {
+
+	int x;
+	cin >> x;
+
+	if (x == -1) {
+		return NULL;
+	}
+
+	TreeNode<int>*root = NULL;
+
+	while (x != -1) {
+		root = InsertInBst(root, x);
+		cin >> x;
+	}
+
+	return root;
+}
+
+bool SearchInBst(TreeNode<int>*root, int target) {
+
+	if (root == NULL) {
+		return false;
+	}
+
+	if (root->val == target) {
+		return true;
+	}
+
+	if (root->val > target) {
+		return SearchInBst(root->left, target);
+	} else {
+		return SearchInBst(root->right, target);
+	}
 
 }
+
+bool IsBst(TreeNode<int>*root, int mini = INT_MIN, int maxi = INT_MAX) {
+
+	if (root == NULL) {
+		return true;
+	}
+
+	//Kya mera current node bst ki property hold karta hain.
+	bool Op1 = 0;
+	if (root->val >= mini and root->val <= maxi) {
+		Op1 = 1;
+	}
+
+	//Kya mera left subtree bst hain.
+	bool Op2 = IsBst(root->left, mini, root->val);
+
+	//kya mera right subtree bst hain.
+	bool Op3 = IsBst(root->right, root->val, maxi);
+
+	if (Op1 == 1 and Op2 == 1 and Op3 == 1) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+
+
+void PrintRange(TreeNode<int>*root, int l, int r) {
+
+	if (root == NULL) {
+		return;
+	}
+
+	PrintRange(root->left, l, r);
+
+	if (root->val >= l and root->val <= r) {
+		cout << root->val << " ";
+	}
+
+	PrintRange(root->right, l, r);
+
+}
+
+
+TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+
+	if (root == NULL) {
+		return NULL;
+	}
+
+	if (root->val > p->val and root->val > q->val) {
+		//LCA will occur in the left subtree
+		return lowestCommonAncestor(root->left, p, q);
+	}
+
+	if (root->val < p->val and root->val < q->val) {
+		//LCA will occur in the right subtree.
+		return lowestCommonAncestor(root->right, p, q);
+	}
+
+
+	//Any other scenario:
+	return root;
+}
+
 
 
