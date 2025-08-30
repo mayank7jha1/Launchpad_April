@@ -87,16 +87,22 @@ vector<int>VerticalView(TreeNode<int>*root) {
 	dfs(root, mp, 0, 1);
 
 	for (pair<int, map<int, multiset<int>>> x : mp) {
-		":";
-		for (int z : y.second) {
-			cout << z << " ";
-			ans.push_back(z);
+		cout << "Column_No : " << x.first << " ";
+		for (pair<int, multiset<int>> y : x.second) {
+			cout << "Level_No: " << y.first << " ";
+			for (int z : y.second) {
+				cout << "Node : ";
+				cout << z << " ";
+				ans.push_back(z);
+			}
 		}
+		cout << endl;
 	}
-	cout << endl;
-}
 
-return ans;
+	cout << endl;
+
+
+	return ans;
 }
 
 
@@ -112,6 +118,7 @@ int main() {
 	// 	cout << x << " ";
 	// }
 	cout << endl;
+
 
 
 }
